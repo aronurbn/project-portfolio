@@ -31,12 +31,22 @@ const Contact = () => {
     if (submitted) setSubmitted(false);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validate()) {
-      console.log('Form submitted:', form);
-      setSubmitted(true);
-      setForm({ name: '', email: '', message: '' });
+    if (validate()) { 
+      try {
+        await fetch('http://localhost:5000/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(form)
+        });
+        setSubmitted(true);
+        setForm({ name: '', email:'', message: ''});
+      } catch (error) {
+        console.error('Sending failed', error);
+      }
     }
   };
 
