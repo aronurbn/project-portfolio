@@ -85,8 +85,8 @@ const Contact = () => {
             value={form.name}
             onChange={handleChange}
             placeholder="Your name"
-            className={`w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400 ${
-              errors.name ? 'border-red-500' : ''
+            className={`w-full border rounded-md px-4 py-2 bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 ${
+              errors.name ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
             }`}
             aria-invalid={errors.name ? 'true' : 'false'}
             aria-describedby={errors.name ? 'name-error' : undefined}
@@ -105,8 +105,8 @@ const Contact = () => {
             value={form.email}
             onChange={handleChange}
             placeholder="you@example.com"
-            className={`w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400 ${
-              errors.email ? 'border-red-500' : ''
+            className={`w-full border rounded-md px-4 py-2 bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 ${
+              errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
             }`}
             aria-invalid={errors.email ? 'true' : 'false'}
             aria-describedby={errors.email ? 'email-error' : undefined}
@@ -125,8 +125,8 @@ const Contact = () => {
             value={form.message}
             onChange={handleChange}
             placeholder="Write your message here..."
-            className={`w-full border border-gray-300 rounded-md px-4 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-cyan-400 ${
-              errors.message ? 'border-red-500' : ''
+            className={`w-full border rounded-md px-4 py-2 resize-none bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 ${
+              errors.message ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
             }`}
             aria-invalid={errors.message ? 'true' : 'false'}
             aria-describedby={errors.message ? 'message-error' : undefined}
