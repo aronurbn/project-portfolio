@@ -32,23 +32,27 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (validate()) { 
-      try {
-        await fetch('http://localhost:5000/send', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(form)
-        });
+  e.preventDefault();
+  if (validate()) {
+    try {
+      const response = await fetch('http://localhost:5000/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await response.json();
+      if (response.ok) {
         setSubmitted(true);
-        setForm({ name: '', email:'', message: ''});
-      } catch (error) {
-        console.error('Sending failed', error);
+        setForm({ name: '', email: '', message: '' });
+      } else {
+        alert(data.error || 'Failed to send message');
       }
+    } catch (error) {
+      alert('Failed to send message');
     }
-  };
+  }
+};
+
 
   return (
     <motion.section
