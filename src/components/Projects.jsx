@@ -31,7 +31,7 @@ const projects = [
 const Projects = () => (
   <motion.section
     id="projects"
-    className="py-20 px-6 lg:px-12 bg-white dark:bg-black text-gray-900 dark:text-gray-200"
+    className="py-20 px-6 lg:px-12 bg-black text-gray-100"
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
@@ -48,7 +48,7 @@ const Projects = () => (
       {projects.map(({ id, title, image, description, demo }) => (
         <motion.div
           key={id}
-          className="bg-gray-100 dark:bg-gray-900 rounded-xl shadow-sm border border-gray-300 dark:border-gray-700 hover:shadow-md transition duration-300 overflow-hidden flex flex-col"
+          className="bg-[#111] rounded-xl border border-gray-700 hover:border-cyan-500 hover:scale-105 transition duration-300 overflow-hidden flex flex-col"
           whileHover={{ scale: 1.02 }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -63,13 +63,13 @@ const Projects = () => (
           <div className="p-6 flex-1 flex flex-col justify-between">
             <div>
               <h3 className="text-xl font-semibold mb-2">{title}</h3>
-              <p className="text-gray-700 dark:text-gray-300 text-sm mb-4">{description}</p>
+              <p className="text-gray-400 text-sm mb-4">{description}</p>
             </div>
             <a
               href={demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-auto text-cyan-600 dark:text-cyan-400 hover:underline font-medium"
+              className="mt-auto text-cyan-400 hover:underline font-medium"
             >
               🔗 View Demo
             </a>
