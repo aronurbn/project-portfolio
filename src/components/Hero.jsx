@@ -51,7 +51,7 @@ const Hero = () => {
 
         {/* Call to Action Buttons */}
         <motion.div
-          className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mt-8"
+          className="flex justify-center items-center gap-6 mt-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
@@ -59,14 +59,14 @@ const Hero = () => {
           <a
             href="/BenIgnacioCV2024.pdf"
             download
-            className="bg-cyan-500 hover:bg-cyan-600 px-6 py-3 rounded text-white font-medium shadow transition duration-300 transform hover:scale-105"
+            className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 px-6 py-3 rounded-full text-white font-medium shadow-md transition hover:scale-105"
           >
             <Download className="w-5 h-5" />
             Download CV
           </a>
           <a
             href="#contact"
-            className="border border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white px-6 py-3 rounded font-medium shadow transition duration-300 transform hover:scale-105"
+            className="flex items-center gap-2 border border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white px-6 py-3 rounded-full font-medium shadow-md transition hover:scale-105"
           >
             <Mail className="w-5 h-5" />
             Contact Me
