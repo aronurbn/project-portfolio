@@ -4,7 +4,7 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import portfolioIcon from '../assets/portfolio-icon.png';
 
-const navLinks = ['hero', 'about', 'projects', 'contact'];
+const navLinks = ['hero', 'about', 'skills', 'projects', 'contact',];
 
 const NavLinks = ({ onClick }) => (
   <>
