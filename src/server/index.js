@@ -1,4 +1,3 @@
-// server/index.js
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
@@ -8,47 +7,52 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Setup transporter once
+// Configure transporter
 const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true, // SSL
+  service: 'gmail',
   auth: {
-    user: process.env.EMAIL_USER,  // your Gmail address
-    pass: process.env.EMAIL_PASS,  // your Gmail app password
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
-// Verify transporter at startup
+// Check transporter at start
 transporter.verify((error, success) => {
   if (error) {
-    console.error('SMTP transporter error:', error);
+    console.log('Error with SMTP', error);
   } else {
-    console.log('SMTP Server ready');
+    console.log('Server is ready to take messages');
   }
 });
 
-app.post('/send', async (req, res) => {
+// POST endpoint to send mail
+app.post('/send', (req, res) => {
   const { name, email, message } = req.body;
 
   if (!name || !email || !message) {
-    return res.status(400).json({ error: 'Please fill all fields.' });
+    return res.status(400).json({ error: 'Please fill in all fields' });
   }
 
-  try {
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER, // sender (your email)
-      replyTo: email,               // reply to the sender’s email
-      to: process.env.EMAIL_USER,   // receiver (your email)
-      subject: `New contact from ${name}`,
-      text: `You received a new message from ${name} <${email}>:\n\n${message}`,
-    });
+  const mailOptions = {
+    from: `${name} <${email}>`,
+    to: process.env.EMAIL_USER,
+    subject: `Contact from ${name}`,
+    text: `
+      Name: ${name}
+      Email: ${email}
+      Message: ${message}
+    `,
+  };
 
-    res.status(200).json({ message: 'Message sent!' });
-  } catch (error) {
-    console.error('Email send error:', error);
-    res.status(500).json({ error: 'Failed to send message' });
-  }
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log('Error:', error);
+      return res.status(500).json({ error: 'Failed to send message' });
+    } else {
+      console.log('Email sent:', info.response);
+      return res.status(200).json({ message: 'Message sent successfully' });
+    }
+  });
 });
 
 const PORT = process.env.PORT || 5000;
