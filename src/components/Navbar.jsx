@@ -51,7 +51,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="bg-[#0f172a] backdrop-blur-md text-white px-8 py-4 flex justify-between items-center fixed w-full z-50 shadow-md"
+      className="fixed top-0 w-full z-50 backdrop-blur-md bg-black/60 shadow-md border-b border-gray-700 px-8 py-4 flex justify-between items-center"
       role="navigation"
       aria-label="Primary Navigation"
     >
