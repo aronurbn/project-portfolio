@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
+import { Download, Mail } from 'lucide-react'; // Import Lucide icons
 import profilePic from '../assets/profilepic.jpg';
 
 const Hero = () => {
@@ -60,13 +61,15 @@ const Hero = () => {
             download
             className="bg-cyan-500 hover:bg-cyan-600 px-6 py-3 rounded text-white font-medium shadow transition duration-300 transform hover:scale-105"
           >
-            📄 Download CV
+            <Download className="w-5 h-5" />
+            Download CV
           </a>
           <a
             href="#contact"
             className="border border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white px-6 py-3 rounded font-medium shadow transition duration-300 transform hover:scale-105"
           >
-            💌 Contact Me
+            <Mail className="w-5 h-5" />
+            Contact Me
           </a>
         </motion.div>
       </div>
