@@ -1,24 +1,35 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGithub, FaFigma 
-} from 'react-icons/fa';
-import { 
-  SiTailwindcss, SiExpress, SiFirebase, SiVercel 
-} from 'react-icons/si';
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGithub, FaFigma, } from 'react-icons/fa';
+import { SiTailwindcss, SiExpress, SiFirebase, SiVercel, } from 'react-icons/si';
 
-const skills = [
-  { name: 'HTML5', icon: <FaHtml5 className="text-orange-500" /> },
-  { name: 'CSS3', icon: <FaCss3Alt className="text-blue-500" /> },
-  { name: 'JavaScript', icon: <FaJs className="text-yellow-400" /> },
-  { name: 'React', icon: <FaReact className="text-cyan-400" /> },
-  { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-cyan-500" /> },
-  { name: 'Node.js', icon: <FaNodeJs className="text-green-500" /> },
-  { name: 'Express.js', icon: <SiExpress className="text-gray-400" /> },
-  { name: 'Firebase', icon: <SiFirebase className="text-yellow-500" /> },
-  { name: 'Vercel', icon: <SiVercel className="text-white" /> },
-  { name: 'GitHub', icon: <FaGithub className="text-white" /> },
-  { name: 'Figma', icon: <FaFigma className="text-pink-500" /> },
+const skillCategories = [
+  {
+    category: 'Frontend',
+    skills: [
+      { name: 'HTML5', icon: <FaHtml5 className="text-orange-500" /> },
+      { name: 'CSS3', icon: <FaCss3Alt className="text-blue-500" /> },
+      { name: 'JavaScript', icon: <FaJs className="text-yellow-400" /> },
+      { name: 'React', icon: <FaReact className="text-cyan-400" /> },
+      { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-cyan-500" /> },
+    ],
+  },
+  {
+    category: 'Backend',
+    skills: [
+      { name: 'Node.js', icon: <FaNodeJs className="text-green-500" /> },
+      { name: 'Express.js', icon: <SiExpress className="text-gray-400" /> },
+      { name: 'Firebase', icon: <SiFirebase className="text-yellow-500" /> },
+    ],
+  },
+  {
+    category: 'Tools & Deployment',
+    skills: [
+      { name: 'Vercel', icon: <SiVercel className="text-white" /> },
+      { name: 'GitHub', icon: <FaGithub className="text-white" /> },
+      { name: 'Figma', icon: <FaFigma className="text-pink-500" /> },
+    ],
+  },
 ];
 
 const Skills = () => {
@@ -35,15 +46,31 @@ const Skills = () => {
         Skills & Tools
       </h2>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
-        {skills.map((skill) => (
-          <div
-            key={skill.name}
-            className="flex flex-col items-center justify-center gap-3 p-4 rounded-xl border border-gray-700 hover:border-cyan-500 hover:scale-105 transition"
+      <div className="space-y-16">
+        {skillCategories.map(({ category, skills }, index) => (
+          <motion.div
+            key={category}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.2, duration: 0.8 }}
           >
-            <div className="text-5xl">{skill.icon}</div>
-            <p className="text-lg text-gray-300">{skill.name}</p>
-          </div>
+            <h3 className="text-2xl font-semibold text-cyan-400 mb-6">
+              {category}
+            </h3>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+              {skills.map((skill) => (
+                <div
+                  key={skill.name}
+                  className="flex flex-col items-center justify-center gap-3 p-4 rounded-xl border border-gray-700 hover:border-cyan-500 hover:scale-105 transition"
+                >
+                  <div className="text-5xl">{skill.icon}</div>
+                  <p className="text-lg text-gray-300 font-semibold">{skill.name}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         ))}
       </div>
     </motion.section>
